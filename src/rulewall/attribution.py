@@ -84,10 +84,16 @@ def _read_distinfo_metadata(meta_dir: Path) -> tuple[str | None, str | None]:
         except OSError:
             continue
         for line in text.splitlines():
-            if line.startswith("Name:") and not name:
+            # The metadata Name/Version are authoritative — they carry the
+            # canonical distribution name (with real hyphens), so they override
+            # the underscore-normalized name parsed from the directory.
+            if line.startswith("Name:"):
                 name = line.split(":", 1)[1].strip()
             elif line.startswith("Version:"):
                 version = line.split(":", 1)[1].strip()
+            elif line.startswith(("Description:", "Requires-Dist:")):
+                # headers end; body begins — stop scanning to stay cheap.
+                break
         break
     return name, version
 
