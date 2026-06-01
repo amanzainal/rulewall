@@ -31,9 +31,9 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/AmanZainal/rulewall"
-Repository = "https://github.com/AmanZainal/rulewall"
-Issues = "https://github.com/AmanZainal/rulewall/issues"
+Homepage = "https://github.com/amanzainal/rulewall"
+Repository = "https://github.com/amanzainal/rulewall"
+Issues = "https://github.com/amanzainal/rulewall/issues"
 
 [project.scripts]
 rulewall = "rulewall.cli:main"

@@ -66,7 +66,7 @@ def build_sarif(result: ScanResult, base_dir: Path | None = None) -> dict:
                 + " — detected in a rule-file shipped by an installed dependency."
             },
             "defaultConfiguration": {"level": _default_level(result, rid).value},
-            "helpUri": "https://github.com/AmanZainal/rulewall#detectors",
+            "helpUri": "https://github.com/amanzainal/rulewall#what-it-detects",
         }
         for rid in used_rule_ids
     ]
@@ -113,7 +113,7 @@ def build_sarif(result: ScanResult, base_dir: Path | None = None) -> dict:
                 "tool": {
                     "driver": {
                         "name": "rulewall",
-                        "informationUri": "https://github.com/AmanZainal/rulewall",
+                        "informationUri": "https://github.com/amanzainal/rulewall",
                         "version": __version__,
                         "rules": rules,
                     }
