@@ -11,4 +11,7 @@ jobs:
       - run: pip install uv
       - run: uv sync
       - run: uv run pytest -q
-      - run: uv run rulewall --demo
+      # Non-gating showcase: --demo scans a synthesized poisoned tree and
+      # intentionally exits non-zero when it finds planted rule-files (that is
+      # the tool working). Keep it informational so it never reds the run.
+      - run: uv run rulewall --demo || true
