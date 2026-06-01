@@ -1,0 +1,12 @@
+# Example pre-commit config that runs rulewall against this repo.
+# Consumers of rulewall would point `repo:` at the rulewall GitHub URL and a tag.
+repos:
+  - repo: local
+    hooks:
+      - id: rulewall
+        name: rulewall (scan dependency tree for poisoned AI-agent rule-files)
+        entry: rulewall
+        language: system
+        pass_filenames: false
+        always_run: true
+        args: ["."]

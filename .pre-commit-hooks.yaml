@@ -1,0 +1,14 @@
+- id: rulewall
+  name: rulewall (scan dependency tree for poisoned AI-agent rule-files)
+  description: >-
+    Walk the installed dependency tree (node_modules / site-packages / vendored
+    deps) for poisoned AI-agent rule-files (CLAUDE.md, .cursorrules, AGENTS.md,
+    .mcp.json, copilot-instructions.md, ...) and fail the commit if any are found.
+  entry: rulewall
+  language: python
+  # rulewall scans directories, not the staged files, so run once per commit.
+  pass_filenames: false
+  always_run: true
+  # By default scan the current project; consumers can override `args`, e.g.
+  #   args: ["node_modules", "--fail-on", "error"]
+  args: ["."]
